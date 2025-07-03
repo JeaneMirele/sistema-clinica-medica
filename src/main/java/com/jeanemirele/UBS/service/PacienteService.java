@@ -23,10 +23,7 @@ public class PacienteService {
     public Paciente findByNome(String nome) {
         return pacienteRepository.findByName(nome);
     }
-
     public Paciente save(Paciente paciente) {
         return pacienteRepository.save(paciente);
     }
-
-
 }

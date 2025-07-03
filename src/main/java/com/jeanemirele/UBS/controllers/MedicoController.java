@@ -1,10 +1,13 @@
 package com.jeanemirele.UBS.controllers;
 
 import com.jeanemirele.UBS.domain.entity.Medico;
+import com.jeanemirele.UBS.dtos.MedicoCreateDTO;
 import com.jeanemirele.UBS.dtos.MedicoResponseDTO;
 import com.jeanemirele.UBS.mappers.MedicoMapper;
 import com.jeanemirele.UBS.service.MedicoService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,5 +39,16 @@ public class MedicoController {
         return ResponseEntity.ok(medicoResponseDTO);
     }
 
+    @PostMapping
+    public ResponseEntity<MedicoResponseDTO> createMedico(@Valid @RequestBody MedicoCreateDTO medicoCreateDTO) {
+        Medico medico = medicoMapper.toEntity(medicoCreateDTO);
+        medicoService.save(medico);
+        MedicoResponseDTO medicoResponseDTO = medicoMapper.toDto(medico);
+        return new ResponseEntity<>(medicoResponseDTO, HttpStatus.CREATED);
+    }
 
+    @DeleteMapping("/{id}")
+    public void deleteMedico(@PathVariable Long id) {
+        medicoService.delete(id);
+    }
 }
