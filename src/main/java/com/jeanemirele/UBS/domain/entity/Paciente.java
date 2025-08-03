@@ -25,7 +25,7 @@ public class Paciente {
     private Long idPaciente;
 
     @NotBlank(message = "O nome precisa ser preenchido!")
-    private String nome;
+    private String name;
 
     @NotNull(message = "O telefone precisa ser preenchido!")
     private String telefone;

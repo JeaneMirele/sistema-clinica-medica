@@ -1,0 +1,24 @@
+services:
+  db-postgres:
+    image: postgres:alpine
+    container_name: db-postgres
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    ports:
+      - "5432:5432"
+
+  app:
+    build:
+      context: .
+    image: ubs-api:1.0.0
+    depends_on:
+      - db-postgres
+    ports:
+      - "8080:8080"
+    env_file:
+    - .env
+
+
+

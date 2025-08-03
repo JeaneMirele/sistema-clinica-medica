@@ -7,10 +7,12 @@ import com.jeanemirele.UBS.exceptions.ResourceNotFoundException;
 import com.jeanemirele.UBS.repositorys.ConsultaRepository;
 import com.jeanemirele.UBS.repositorys.MedicoRepository;
 import com.jeanemirele.UBS.repositorys.PacienteRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

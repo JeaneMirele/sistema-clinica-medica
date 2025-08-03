@@ -13,6 +13,6 @@ public interface PacienteMapper {
     Paciente toEntity(PacienteCreateDTO pacienteCreateDTO);
     PacienteResponseDTO toDto(Paciente paciente);
 
-    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "idPaciente", ignore = true)
     void updateEntityFromDto(Paciente paciente, @MappingTarget Paciente entity);
 }
